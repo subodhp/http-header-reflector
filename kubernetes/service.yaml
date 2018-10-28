@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: http-echo
+  namespace: http-echo
+spec:
+  selector:
+    app: http-echo
+  ports:
+  - protocol: TCP
+    port: 9191
+    targetPort: 8181
+  externalIPs:
+  - 192.168.56.101
