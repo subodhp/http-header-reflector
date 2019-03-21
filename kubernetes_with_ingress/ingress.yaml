@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: http-echo-ingress
+  namespace: http-echo
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    ginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - host: test.test.com
+    http:
+      paths:
+      - backend:
+          serviceName: http-echo
+          servicePort: 8181

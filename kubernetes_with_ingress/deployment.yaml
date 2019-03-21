@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http-echo-deployment
+  namespace: http-echo
+spec:
+  selector:
+    matchLabels:
+      app: http-echo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: http-echo
+    spec:
+      containers:
+      - name: http-echo
+        image: http-echo:v1
+        ports:
+        - containerPort: 8181
