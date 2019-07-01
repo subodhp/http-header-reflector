@@ -2,14 +2,14 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: http-echo-ingress
-  namespace: http-echo
   annotations:
-    ginx.ingress.kubernetes.io/ssl-redirect: "false"
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/proxy-buffering: "off"
+    nginx.ingress.kubernetes.io/connection-proxy-header: "keep-alive"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "14400"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "14400"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "14400"
 spec:
-  rules:
-  - http:
-      paths:
-      - path: /ingress_path
-        backend:
-          serviceName: http-echo
-          servicePort: 8181
+  backend:
+    serviceName: http-echo
+    servicePort: 8181

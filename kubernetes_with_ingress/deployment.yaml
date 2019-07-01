@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: http-echo-deployment
-  namespace: http-echo
 spec:
   selector:
     matchLabels:
@@ -15,6 +14,6 @@ spec:
     spec:
       containers:
       - name: http-echo
-        image: http-echo:v1
+        image: subodhp/http-echo:v1
         ports:
         - containerPort: 8181
